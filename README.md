@@ -1,4 +1,243 @@
-# BIP39 助记词生成器
+# BIP39 Mnemonic Generator | BIP39 助记词生成器
+
+[English](#english) | [中文](#中文)
+
+---
+
+## English
+
+A BIP39 mnemonic generation tool that allows users to customize the first 11 words. This tool can automatically calculate and generate a complete 12-word mnemonic that complies with the BIP39 standard based on the first 11 words selected by the user.
+
+### Features
+
+- ✅ **Customize First 11 Words**: Allow users to choose personalized first 11 mnemonic words
+- ✅ **Automatic Checksum Calculation**: System automatically calculates the 12th checksum word that complies with BIP39 standard
+- ✅ **Multi-language Support**: Support English, Simplified Chinese, Traditional Chinese, French, Italian, Japanese, Korean, Spanish
+- ✅ **Real-time Validation**: Real-time validation of mnemonic validity and strength
+- ✅ **Security Assessment**: Provide mnemonic strength scoring and security recommendations
+- ✅ **Modern UI**: Responsive user interface built with Ant Design
+- ✅ **Copy Function**: One-click copy of generated mnemonic
+- ✅ **Complete Test Coverage**: Including unit tests and integration tests
+
+### Tech Stack
+
+- **Frontend Framework**: React 18 + TypeScript
+- **UI Component Library**: Ant Design 5.x
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS + Ant Design
+- **Build Tool**: Vite
+- **Testing Framework**: Vitest + Testing Library
+- **Core Libraries**: bip39, crypto-js, buffer
+
+### Quick Start
+
+#### Requirements
+
+- Node.js 16+
+- npm or yarn
+
+#### Installation & Running
+
+```bash
+# Clone the project
+git clone <repository-url>
+cd bip-39
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Run tests
+npm test
+
+# Build for production
+npm run build
+```
+
+#### Access Application
+
+After the development server starts, visit `http://localhost:5173` in your browser.
+
+### Usage Guide
+
+#### Basic Operations
+
+1. **Select Language**: Choose your preferred language in the top-right corner (default English)
+2. **Select Words**: Choose or input your desired mnemonic words in the 11 input boxes
+   - Supports auto-completion and search functionality
+   - Only words from the BIP39 standard dictionary can be selected
+3. **View Results**: System automatically calculates the 12th checksum word and displays the complete mnemonic
+4. **Validation & Assessment**: Check the validation status and security strength score of the mnemonic
+5. **Copy & Save**: Use the copy button to securely save your mnemonic
+
+#### Quick Operations
+
+- **Random All**: Quickly generate 11 random words
+- **Random Word**: Click the refresh button next to each input box to randomly select a single word
+- **Reset**: Clear all selections and start over
+- **Hide/Show**: Toggle mnemonic visibility for enhanced security
+
+### Security Notice
+
+⚠️ **Important Warning**:
+- Custom mnemonics may reduce security
+- Recommended use only when you fully understand the risks
+- For actual use, it's recommended to use completely randomly generated mnemonics
+
+🔒 **Security Recommendations**:
+- Please use this tool in a secure environment
+- Do not generate mnemonics in public places or insecure network environments
+- Keep your mnemonic safe and do not share it with others
+- It's recommended to write the mnemonic on paper and store it in a safe place
+- Do not store digital copies of mnemonics on networked devices
+
+### Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── WordSelector.tsx        # Word selector
+│   ├── MnemonicDisplay.tsx     # Mnemonic display
+│   ├── ValidationPanel.tsx     # Validation panel
+│   ├── LanguageSelector.tsx    # Language selector
+│   ├── MnemonicGenerator.tsx   # Main generator component
+│   └── index.ts               # Component exports
+├── store/              # Zustand state management
+│   └── index.ts
+├── types/              # TypeScript type definitions
+│   ├── global.d.ts            # Global type declarations
+│   └── index.ts
+├── utils/              # Utility functions and core algorithms
+│   ├── mnemonicGenerator.ts    # BIP39 core algorithm
+│   └── index.ts
+├── test/               # Test configuration
+│   └── setup.ts
+├── __tests__/          # Test files
+│   ├── mnemonicGenerator.test.ts
+│   └── utils.test.ts
+├── App.tsx             # Main application component
+├── main.tsx            # Application entry point
+└── index.css           # Global styles
+```
+
+### API Documentation
+
+#### MnemonicGenerator Class
+
+Core BIP39 mnemonic generator class.
+
+```typescript
+class MnemonicGenerator {
+  // Generate complete mnemonic from first 11 words
+  generateFromPrefix(selectedWords: string[]): string
+  
+  // Calculate checksum
+  calculateChecksum(words: string[]): string
+  
+  // Validate mnemonic
+  validateMnemonic(mnemonic: string): boolean
+  
+  // Calculate strength score
+  calculateStrengthScore(mnemonic: string): number
+  
+  // More methods...
+}
+```
+
+#### Zustand Store
+
+Application state management.
+
+```typescript
+interface MnemonicStore {
+  selectedWords: string[];
+  generatedMnemonic: string;
+  language: SupportedLanguage;
+  isValid: boolean;
+  // More states and operations...
+}
+```
+
+### Testing
+
+The project includes complete test coverage:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+Tests include:
+- BIP39 core algorithm tests
+- Utility function tests
+- Component unit tests
+- Integration tests
+
+### Technical Implementation
+
+#### BIP39 Standard Implementation
+
+The project strictly follows the [BIP39 standard](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki):
+
+1. **Dictionary**: Uses standard 2048-word BIP39 dictionary
+2. **Entropy**: 128-bit entropy corresponds to 12-word mnemonic
+3. **Checksum**: Checksum calculated via SHA256 hash
+4. **Validation**: Complete mnemonic validation process
+
+#### Core Algorithm
+
+```typescript
+// Checksum calculation process
+1. Convert first 11 words to 11-bit binary representation
+2. Concatenate into 121-bit binary string
+3. Use trial method to find the 12th word that makes the entire mnemonic valid
+4. Verify final mnemonic complies with BIP39 standard
+```
+
+### Browser Compatibility
+
+- Chrome 88+
+- Firefox 78+
+- Safari 14+
+- Edge 88+
+
+### Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Create a Pull Request
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Disclaimer
+
+This tool is for educational and research purposes only. Use mnemonics generated by this tool for actual cryptocurrency wallets at your own risk. The developers are not responsible for any losses caused by using this tool.
+
+### Contact Us
+
+For questions or suggestions, please submit an [Issue](../../issues) or contact the development team.
+
+---
+
+**Remember**: Mnemonic phrases are the only credential to access your cryptocurrency assets, please keep them safe!
+
+---
+
+## 中文
 
 一个允许用户自定义前11个单词的BIP39助记词生成工具。该工具能够根据用户选择的前11个单词，自动计算并生成符合BIP39标准的完整12词助记词。
 
@@ -96,19 +335,24 @@ src/
 │   ├── MnemonicDisplay.tsx     # 助记词显示
 │   ├── ValidationPanel.tsx     # 验证面板
 │   ├── LanguageSelector.tsx    # 语言选择器
-│   └── MnemonicGenerator.tsx   # 主生成器组件
+│   ├── MnemonicGenerator.tsx   # 主生成器组件
+│   └── index.ts               # 组件导出
 ├── store/              # Zustand状态管理
 │   └── index.ts
 ├── types/              # TypeScript类型定义
+│   ├── global.d.ts            # 全局类型声明
 │   └── index.ts
 ├── utils/              # 工具函数和核心算法
 │   ├── mnemonicGenerator.ts    # BIP39核心算法
 │   └── index.ts
+├── test/               # 测试配置
+│   └── setup.ts
 ├── __tests__/          # 测试文件
 │   ├── mnemonicGenerator.test.ts
 │   └── utils.test.ts
-└── test/               # 测试配置
-    └── setup.ts
+├── App.tsx             # 主应用组件
+├── main.tsx            # 应用入口
+└── index.css           # 全局样式
 ```
 
 ## API 文档

@@ -2,7 +2,6 @@ import React from 'react';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import { MnemonicGenerator } from './components';
-import './App.css';
 
 function App() {
   const handleMnemonicGenerated = (mnemonic: string) => {
