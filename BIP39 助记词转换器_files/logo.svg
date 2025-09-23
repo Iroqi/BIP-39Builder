@@ -1,0 +1,141 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradAndroid512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00b812" />
+      <stop offset="20%" stop-color="#00d515" />
+      <stop offset="50%" stop-color="#00ff18" />
+      <stop offset="80%" stop-color="#00d515" />
+      <stop offset="100%" stop-color="#00b812" />
+    </linearGradient>
+    
+    <linearGradient id="bgGradAndroid512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080808" />
+      <stop offset="30%" stop-color="#1a1a1a" />
+      <stop offset="70%" stop-color="#2d2d2d" />
+      <stop offset="100%" stop-color="#1a1a1a" />
+    </linearGradient>
+    
+    <filter id="shadowAndroid512" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="8" dy="8" result="offset" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+    
+    <filter id="glowAndroid512" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 背景圆形 -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGradAndroid512)" filter="url(#shadowAndroid512)" />
+  
+  <!-- 外层装饰环 -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#gradAndroid512)" stroke-width="6" opacity="0.6" />
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#gradAndroid512)" stroke-width="2" opacity="0.4" />
+  
+  <!-- 区块链网格 -->
+  <g stroke="url(#gradAndroid512)" stroke-width="8" fill="none" opacity="0.8">
+    <!-- 水平连接线 -->
+    <line x1="80" y1="170" x2="432" y2="170" />
+    <line x1="80" y1="256" x2="432" y2="256" />
+    <line x1="80" y1="342" x2="432" y2="342" />
+    
+    <!-- 垂直连接线 -->
+    <line x1="170" y1="80" x2="170" y2="432" />
+    <line x1="256" y1="80" x2="256" y2="432" />
+    <line x1="342" y1="80" x2="342" y2="432" />
+  </g>
+  
+  <!-- 区块节点 -->
+  <g fill="url(#gradAndroid512)" filter="url(#glowAndroid512)">
+    <rect x="155" y="155" width="30" height="30" rx="8" />
+    <rect x="241" y="155" width="30" height="30" rx="8" />
+    <rect x="327" y="155" width="30" height="30" rx="8" />
+    
+    <rect x="155" y="241" width="30" height="30" rx="8" />
+    <rect x="241" y="241" width="30" height="30" rx="8" />
+    <rect x="327" y="241" width="30" height="30" rx="8" />
+    
+    <rect x="155" y="327" width="30" height="30" rx="8" />
+    <rect x="241" y="327" width="30" height="30" rx="8" />
+    <rect x="327" y="327" width="30" height="30" rx="8" />
+  </g>
+  
+  <!-- 中心安全盾牌图标 -->
+  <g transform="translate(256, 256)">
+    <!-- 盾牌背景 -->
+    <path d="M-50,-60 Q-50,-70 -35,-70 L35,-70 Q50,-70 50,-60 L50,25 Q50,50 0,70 Q-50,50 -50,25 Z" 
+          fill="url(#gradAndroid512)" filter="url(#shadowAndroid512)" />
+    
+    <!-- 盾牌内部渐变 -->
+    <path d="M-45,-55 Q-45,-65 -30,-65 L30,-65 Q45,-65 45,-55 L45,20 Q45,45 0,65 Q-45,45 -45,20 Z" 
+          fill="url(#bgGradAndroid512)" opacity="0.3" />
+    
+    <!-- 盾牌边框 -->
+    <path d="M-50,-60 Q-50,-70 -35,-70 L35,-70 Q50,-70 50,-60 L50,25 Q50,50 0,70 Q-50,50 -50,25 Z" 
+          fill="none" stroke="#ffffff" stroke-width="4" opacity="0.9" />
+    
+    <!-- 锁图标 -->
+    <g fill="#ffffff">
+      <!-- 锁身 -->
+      <rect x="-20" y="-10" width="40" height="40" rx="4" filter="url(#innerGlow)" />
+      <!-- 锁扣 -->
+      <path d="M-15,-30 Q-15,-40 0,-40 Q15,-40 15,-30 L15,-10 L-15,-10 Z" 
+            fill="none" stroke="#ffffff" stroke-width="6" />
+      <!-- 锁孔 -->
+      <circle cx="0" cy="10" r="8" fill="#00b812" />
+      <rect x="-3" y="15" width="6" height="12" fill="#00b812" />
+    </g>
+    
+    <!-- 盾牌装饰线条 -->
+    <g stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5">
+      <path d="M-30,-40 Q0,-50 30,-40" />
+      <path d="M-35,0 Q0,-10 35,0" />
+    </g>
+  </g>
+  
+  <!-- BIP39文字 -->
+  <text x="256" y="460" font-family="Arial, sans-serif" font-size="36" font-weight="bold" 
+        text-anchor="middle" fill="url(#gradAndroid512)">BIP39</text>
+  
+  <!-- 装饰性粒子效果 -->
+  <g fill="url(#gradAndroid512)" opacity="0.6">
+    <circle cx="60" cy="80" r="6" />
+    <circle cx="452" cy="90" r="4" />
+    <circle cx="50" cy="400" r="4" />
+    <circle cx="462" cy="380" r="6" />
+    <circle cx="80" cy="450" r="3" />
+    <circle cx="432" cy="60" r="3" />
+    <circle cx="30" cy="256" r="4" />
+    <circle cx="482" cy="256" r="5" />
+  </g>
+  
+  <!-- 科技感线条动画元素 -->
+  <g stroke="url(#gradAndroid512)" stroke-width="3" fill="none" opacity="0.4">
+    <path d="M40,256 Q80,200 120,256 T200,256" />
+    <path d="M256,40 Q200,80 256,120 T256,200" />
+    <path d="M472,256 Q432,312 392,256 T312,256" />
+    <path d="M256,472 Q312,432 256,392 T256,312" />
+  </g>
+  
+  <!-- 边缘高光 -->
+  <circle cx="256" cy="256" r="235" fill="none" stroke="url(#gradAndroid512)" stroke-width="1" opacity="0.8" />
+</svg> 
